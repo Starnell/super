@@ -1,19 +1,19 @@
 ﻿一、目录结构
 ```php
 $str=<<<EOT
-app           项目逻辑目录
-└ controller  控制器目录
-└ model       模型目录
-└ view        视图目录
-common        公共类目录
- └ classes    框架类目录
- └ vendor     第三方库目录
-	 └ Smarty Smarty库
-configs       配置文件目录
-public        资源文件目录
- └ uploads    上传文件目录
-global.php    用来加载各种文件
-index.php     入口文件
+app             项目逻辑目录
+└ controller    控制器目录
+└ model         模型目录
+└ view          视图目录
+common          公共类目录
+ └ classes      框架类目录
+ └ vendor       第三方库目录
+	     └ Smarty   Smarty库
+configs         配置文件目录
+public          资源文件目录
+ └ uploads      上传文件目录
+global.php      用来加载各种文件
+index.php       入口文件
 EOT;
 ```
 
@@ -124,16 +124,37 @@ class user{
 </html>
 ```
 4、url访问  
-| URL | Controller | Method | GET
-| :-| :-: | :-: | :-| 
-| /app | index | index | |
-| /app/movie | movie | index | |
-| /app/movie/show | movie | show | |
-| /app/movie/show/type/all/page/1 | movie | show |{"type":"all","page":1} |
-| /app/movie/show?type=all&page=1 | movie | show |{"type":"all","page":1} |
-| /app/movie/type/all/page/1 | movie | index |{"type":"all","page":1} |
-| /app/movie?type=all&page=1 | movie | index |{"type":"all","page":1} |
-
+URL：/app  
+Controller：index  
+Method：index  
+  
+URL：/app/movie  
+Controller：movie  
+Method：index  
+  
+URL：/app/movie/show  
+Controller：movie  
+Method：show  
+  
+URL：/app/movie/show/type/all/page/1  
+Controller：movie  
+Method：show  
+GET：{"type":"all","page":1}  
+  
+URL：/app/movie/show?type=all&page=1  
+Controller：movie  
+Method：show  
+GET：{"type":"all","page":1} 
+  
+URL：/app/movie/type/all/page/1  
+Controller：movie  
+Method：index  
+GET：{"type":"all","page":1}  
+  
+URL：/app/movie?type=all&page=1  
+Controller：movie  
+Method：index  
+GET：{"type":"all","page":1}
 
 三、注意
 1) 路径严格按照大小写区分
