@@ -1,48 +1,48 @@
 <?php
-session_start();
-$image=imagecreatetruecolor(100, 30);
-$bgcolor=imagecolorallocate($image, 255, 255, 255);  //设置背景为白色,默认为黑色
-imagefill($image, 0, 0, $bgcolor);        //填充颜色，把所有与（x，y）颜色相同的点都涂成bgcolor
+namespace common;
+class Captcha{
 
-$captch_code='';    //保存验证码的变量
+    public function create(){
+        $image=imagecreatetruecolor(100, 30);
+        //设置背景为白色,默认为黑色
+        $bgColor=imagecolorallocate($image, 255, 255, 255);
+        //填充颜色，把所有与(x，y)颜色相同的点都涂成bgColor
+        imagefill($image, 0, 0, $bgColor);
+        $code='';  //保存验证码的变量
+        for($i=0; $i<4; $i++){
+            $fontSize=1500;  //字体大小为6px
+            $fontColor=imagecolorallocate($image, rand(0,120), rand(0,120), rand(0,120));
+            //字母数字混合字典
+            $data='3456789qwertyuipkjhgfdsaxcvbnmQWERTYUIPLKJHGFDSAXCVBNM';
+            //取从0到末尾这一段中的随机一个字符
+            $fontContent=substr($data, rand(0,strlen($data)),1);
+            $code.=$fontContent;
+            $x=rand(5,10)+($i*100/4);
+            $y=rand(5,10);
+            imagestring($image, $fontSize, $x, $y, $fontContent, $fontColor);
+        }
+        /**
+         * 设置干扰点（200个）
+         */
+        for($i=0; $i<200; $i++){
+            $pointColor= imagecolorallocate($image, rand(50,200),rand(50,200), rand(50,200));
+            //画两百个随机位置随机颜色的点
+            imagesetpixel($image, rand(1,99), rand(1,29), $pointColor);
+        }
+        /**
+         * 设置干扰线（3条）
+         */
+        for($i=0; $i<3; $i++){
+            $lineColor=imagecolorallocate($image, rand(80,220), rand(80,220), rand(80,220));
+            //画三条随机位置随机颜色的线
+            imageline($image, rand(1,99), rand(1,29), rand(1,99), rand(1,29), $lineColor);
+        }
 
-// for($i=0;$i<4;$i++){
-// 	$fontsize=6;        //字体大小为6px
-// 	$fontcolor=imagecolorallocate($image, rand(0,120),rand(0,120),rand(0,120));
-// 	$fontcontent=rand(0,9);     //产生0到9的随机数
+        //把生成的验证码保存到session服务器
+        $_SESSION['code']=strtolower($code);
+        header('content-type:image/png');
+        imagepng($image);
+        imagedestroy($image);
+    }
 
-// 	$x=rand(5,10)+($i*100/4);
-// 	$y=rand(5,10);
-//     //在image中，（x，y）的位置上，填上颜色为fontcolor，大小为fontsize的字fontcontent
-// 	imagestring($image, $fontsize, $x, $y, $fontcontent, $fontcolor);
-
-// }
-for($i=0;$i<4;$i++){
-    $fontsize=1500;        //字体大小为6px
-    $fontcolor=imagecolorallocate($image, rand(0,120),rand(0,120),rand(0,120));
-    $data='3456789qwertyuipkjhgfdsaxcvbnmQWERTYUIPLKJHGFDSAXCVBNM';       //字母数字混合字典
-    $fontcontent=substr($data, rand(0,strlen($data)),1);      //取从0到末尾这一段中的随机一个字符
-    $captch_code.=$fontcontent;        //加入到保存验证码的变量中
-
-    $x=rand(5,10)+($i*100/4);
-    $y=rand(5,10);
-
-    imagestring($image, $fontsize, $x, $y, $fontcontent, $fontcolor);
 }
-
-for($i=0;$i<200;$i++){
-    $pointcolor=imagecolorallocate($image, rand(50,200),rand(50,200), rand(50,200));
-    imagesetpixel($image, rand(1,99), rand(1,29), $pointcolor);         //画两百个随机位置随机颜色的点，作为干扰元素
-}
-
-for($i=0;$i<3;$i++){
-    $linecolor=imagecolorallocate($image, rand(80,220), rand(80,220), rand(80,220));
-    imageline($image, rand(1,99), rand(1,29), rand(1,99), rand(1,29), $linecolor);         //画三条随机位置随机颜色的线
-}
-
-$_SESSION['code']=strtolower($captch_code);      //把生成的验证码保存到session服务器
-header('content-type:image/png');
-imagepng($image);
-
-imagedestroy($image);
-?>
