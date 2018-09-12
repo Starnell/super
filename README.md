@@ -1,4 +1,4 @@
-﻿###一、目录结构
+﻿### 一、目录结构
 ```php
 $str=<<<EOT
 app             项目逻辑目录
@@ -17,8 +17,8 @@ index.php       入口文件
 EOT;
 ```
 
-###二、使用  
-####1、数据库配置  
+### 二、使用  
+#### 1、数据库配置  
 路径：/configs/db.php
 ```php
 return array(
@@ -31,7 +31,7 @@ return array(
     //'db_port'    =>   27017
 );
 ```
-####2、Smarty模板引擎配置  
+#### 2、Smarty模板引擎配置  
 路径：/configs/smarty.php
 ```php
 return array(
@@ -45,7 +45,7 @@ return array(
 );
 
 ```
-####3、一个简单的MVC例子
+#### 3、一个简单的MVC例子
 ```php
 $str=<<<EOT
 app           
@@ -123,7 +123,7 @@ class user{
 </body>
 </html>
 ```
-####4、url访问  
+#### 4、url访问  
 URL：/app  
 Controller：index  
 Method：index  
@@ -156,7 +156,7 @@ Controller：movie
 Method：index  
 Params：{"type":"all","page":1}
 
-###三、注意
+### 三、注意
 1) 路径严格按照大小写区分
 2) 模型、控制器、公共类文件名首字母必须大写
 
