@@ -123,7 +123,7 @@ class user{
 </html>
 ```
 #### 4、url访问  
-<table border="1">
+<table>
     <tbody>
         <tr align="left">
             <th>URL</th>
