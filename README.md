@@ -125,7 +125,7 @@ class user{
 #### 4、url访问  
 <table border="1">
     <tbody>
-        <tr text-align="left">
+        <tr align="left">
             <th>URL</th>
             <th>Controller</th>
             <th>Method</th>
@@ -175,7 +175,6 @@ class user{
          </tr>
     </tbody>
 </table>  
-
 ### 三、注意
 1) 路径严格按照大小写区分
 2) 模型、控制器、公共类文件名首字母必须大写
