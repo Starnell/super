@@ -123,37 +123,58 @@ class user{
 </html>
 ```
 #### 4、url访问  
-URL：/app  
-Controller：index  
-Method：index  
-  
-URL：/app/movie  
-Controller：movie  
-Method：index  
-  
-URL：/app/movie/show  
-Controller：movie  
-Method：show  
-  
-URL：/app/movie/show/type/all/page/1  
-Controller：movie  
-Method：show  
-Params：{"type":"all","page":1}  
-  
-URL：/app/movie/show?type=all&page=1  
-Controller：movie  
-Method：show  
-Params：{"type":"all","page":1} 
-  
-URL：/app/movie/type/all/page/1  
-Controller：movie  
-Method：index  
-Params：{"type":"all","page":1}  
-  
-URL：/app/movie?type=all&page=1  
-Controller：movie  
-Method：index  
-Params：{"type":"all","page":1}
+<table border="1">
+    <tbody>
+        <tr text-align="left">
+            <th>URL</th>
+            <th>Controller</th>
+            <th>Method</th>
+            <th>Parameters</th>
+        </tr>
+        <tr>
+            <td>/app</td>
+            <td>index</td>
+            <td>index</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>/app/movie</td>
+            <td>movie</td>
+            <td>index</td>
+            <td></td>
+         </tr>
+        <tr>
+            <td>/app/movie/show</td>
+            <td>movie</td>
+            <td>show</td>
+            <td></td>
+         </tr>
+        <tr>
+            <td>/app/movie/show/type/all/page/1</td>
+            <td>movie</td>
+            <td>show</td>
+            <td>{"type":"all","page":1}</td>
+         </tr>
+        <tr>
+            <td>/app/movie/show?type=all&page=1</td>
+            <td>movie</td>
+            <td>show</td>
+            <td>{"type":"all","page":1}</td>
+         </tr>
+        <tr>
+            <td>/app/movie/type/all/page/1</td>
+            <td>movie</td>
+            <td>index</td>
+            <td>{"type":"all","page":1}</td>
+         </tr>
+        <tr>
+            <td>/app/movie?type=all&page=1</td>
+            <td>movie</td>
+            <td>index</td>
+            <td>{"type":"all","page":1}</td>
+         </tr>
+    </tbody>
+</table>  
 
 ### 三、注意
 1) 路径严格按照大小写区分
